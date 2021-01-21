@@ -1,4 +1,4 @@
-def are_valid_groups2(num, groups):
+def are_valid_groups(num, groups):
     for n in range(len(num)):
         num[n] = str(num[n])
     check = 0
