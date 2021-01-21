@@ -1,12 +1,16 @@
-def are_valid_groups(num, groups):
-    counter = 0
+def are_valid_groups2(num, groups):
+    for n in range(len(num)):
+        num[n] = str(num[n])
+    check = 0
     i = 0
     while i < len(num):
         for j in range(len(groups)):
-            counter += groups[j].count(num[i])
-        if counter == 0:
+            if (len(groups[j])<2) or (len(groups[j])>3):
+                return False
+            check += groups[j].count(int(num[i]))
+        if check!=1:
             return False
         i+=1
-        counter=0
+        check=0
     else:
         return True
