@@ -13,4 +13,4 @@ def are_valid_groups2(num, groups):
         i+=1
         check=0
     else:
-        return True
+        return True
