@@ -5,7 +5,7 @@ def are_valid_groups(num, groups):
     i = 0
     while i < len(num):
         for j in range(len(groups)):
-            if (len(groups[j])<2) or (len(groups[j]>3)):
+            if (len(groups[j])<2) or (len(groups[j])>3):
                 return False
             check += groups[j].count(int(num[i]))
         if check!=1:
