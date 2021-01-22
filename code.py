@@ -16,4 +16,3 @@ def are_valid_groups(num, groups):
         return True
 
         #test case for git revert
-        #random documentation here
