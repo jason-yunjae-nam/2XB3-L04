@@ -1,23 +1,22 @@
 import timeit
 import sys
 
-def test_list_copy(n):
-    thislist = list(range(1,n))
-    newlist = thislist.copy()
-    return newlist
+def test_list_copy(thislist, n):
+    return thislist.copy()
 
 def timetest_copy(runs, n):
     total = 0
+    thislist = list(range(1,n))
     for _ in range(runs):
         start = timeit.default_timer()
-        test_list_copy(n)
+        test_list_copy(thislist, n)
         end = timeit.default_timer()
         total += end - start
     return total/runs
 
-'''
-for i in range(1, 1000):
-    print(i*100, timetest_copy(100, i*100))'''
+
+#for i in range(1, 1000):
+#    print(i*100, timetest_copy(100, i*100))
 
 #####
 
