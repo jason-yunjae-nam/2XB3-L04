@@ -1,4 +1,5 @@
 import timeit
+import sys
 
 def test_list_copy(n):
     thislist = list(range(1,n))
@@ -31,6 +32,9 @@ def timetest_lookup(thislist, i):
 
 
 thislist = list(range(1000000))
+sys.stdout = open("lookup_output.txt", "w")
 for i in range(len(thislist)):
     print(i, timetest_lookup(thislist, i))
+sys.stdout.close()
+
 
