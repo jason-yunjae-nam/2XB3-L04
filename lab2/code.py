@@ -20,20 +20,22 @@ for i in range(1, 1000):
 
 #####
 
-def test_list_lookup():
-    thislist = list(range(1000000))
+def test_list_lookup(thislist):
     for i in range(len(thislist)):
         thislist[i]
 
 def timetest_lookup(runs):
+    thislist = list(range(1000000))
     total = 0
     for _ in range(runs):
         start = timeit.default_timer()
-        test_list_lookup()
+        test_list_lookup(thislist)
         end = timeit.default_timer()
         total += end - start
     return total/runs
 
 
-for i in range(1, 1000):
-    print(i, timetest_lookup(10))
+#for i in range(1, 1000):
+    #print(i, timetest_lookup(10))
+
+print(timetest_lookup(10))
