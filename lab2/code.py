@@ -47,7 +47,7 @@ def timetest_append(thislist, i):
     end = timeit.default_timer()
     return end - start
 
-sys.stdout = open("append_output.txt", "w")
+sys.stdout = open("append_output2.txt", "w")
 for i in range(1000):
     print(i, timetest_append(thislist, i))
 sys.stdout.close()
