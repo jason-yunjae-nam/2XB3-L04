@@ -48,5 +48,5 @@ def timetest_append(thislist, i):
 
 sys.stdout = open("append_output.txt", "w")
 for i in range(1000000):
-    print(timetest_append(thislist, i))
+    print(i, timetest_append(thislist, i))
 sys.stdout.close()
