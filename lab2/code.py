@@ -42,11 +42,12 @@ def test_list_append(thislist, i):
 
 def timetest_append(thislist, i):
     start = timeit.default_timer()
-    test_list_append(thislist, i)
+    for j in range(100*i):
+        test_list_append(thislist, i)
     end = timeit.default_timer()
     return end - start
 
 sys.stdout = open("append_output.txt", "w")
-for i in range(1000000):
+for i in range(1000):
     print(i, timetest_append(thislist, i))
 sys.stdout.close()
