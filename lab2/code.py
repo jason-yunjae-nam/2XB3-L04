@@ -47,7 +47,28 @@ def timetest_append(thislist, i):
     end = timeit.default_timer()
     return end - start
 
+'''
 sys.stdout = open("append_output2.txt", "w")
 for i in range(1000):
     print(100*i, timetest_append(thislist, i))
+sys.stdout.close()'''
+
+
+#######
+def lookup_2(thislist, i):
+    return thislist[i]
+
+def timetest_lookup_2(runs, thislist, i):
+    total = 0
+    for _ in range(runs):
+        start = timeit.default_timer()
+        lookup_2(thislist, i)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+thislist = list(range(1000000))
+sys.stdout = open("lookup2_output.txt", "w")
+for i in range(len(thislist)):
+    print(i, timetest_lookup_2(100, thislist, i))
 sys.stdout.close()
