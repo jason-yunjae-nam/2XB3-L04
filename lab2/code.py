@@ -30,10 +30,23 @@ def timetest_lookup(thislist, i):
     return end - start
 
 
-thislist = list(range(1000000))
-sys.stdout = open("lookup_output.txt", "w")
-for i in range(len(thislist)):
-    print(i, timetest_lookup(thislist, i))
+# thislist = list(range(1000000))
+# sys.stdout = open("lookup_output.txt", "w")
+# for i in range(len(thislist)):
+#     print(i, timetest_lookup(thislist, i))
+# sys.stdout.close()
+
+thislist = []
+def test_list_append(thislist, i):
+    return thislist.append(i)
+
+def timetest_append(thislist, i):
+    start = timeit.default_timer()
+    test_list_append(thislist, i)
+    end = timeit.default_timer()
+    return end - start
+
+sys.stdout = open("append_output.txt", "w")
+for i in range(1000000):
+    print(timetest_append(thislist, i))
 sys.stdout.close()
-
-
