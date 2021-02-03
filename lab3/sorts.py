@@ -15,7 +15,7 @@ def quicksort_inplace(L):
     return quicksort_inplace(L[:left+1]) + [L[left+1]] + quicksort_inplace(L[left+2:])
 
 #lst = [33,89,55,35,45,98,76,54,49]
-lst = [43, 93, 98,69,76,32,97,31]
+lst = [43, 93, 98,69,76,32,97,31, 31,93]
 #print(quicksort_inplace(lst))
     
 
@@ -64,8 +64,8 @@ def dual_quicksort_copy(L):
             mid.append(num)
     return dual_quicksort_copy(left) + [pivot1] + dual_quicksort_copy(mid) + [pivot2] + dual_quicksort_copy(right)
 
-dual_pivot_quicksort(lst)
-print(lst)
+#dual_pivot_quicksort(lst)
+#print(lst)
 
 def tri_pivot_quicksort(L):
     copy = tri_quicksort_copy(L)
@@ -75,7 +75,10 @@ def tri_pivot_quicksort(L):
 
 def tri_quicksort_copy(L):
     if len(L) < 3:
+        if len(L) == 2 and L[0] > L[1]:
+            L[0] , L[1] = L[1], L[0]
         return L
+
     pivot1 = L[0]
     pivot2 = L[len(L) - 1]
     pivot3 = L[1]
@@ -86,13 +89,17 @@ def tri_quicksort_copy(L):
     if (pivot1 > pivot2):
         pivot1, pivot2 = pivot2, pivot1
     left, lmid, rmid, right = [], [], [], []
+
     for num in L[2:-1]:
-        if num < pivot1:
+        if num <= pivot1:
             left.append(num)
-        elif num > pivot3:
+        elif num >= pivot3:
             right.append(num)
         elif (num > pivot1) and (num < pivot2):
             lmid.append(num)
         else:
             rmid.append(num)
     return tri_quicksort_copy(left) + [pivot1] + tri_quicksort_copy(lmid) + [pivot2] + tri_quicksort_copy(rmid) + [pivot3] + tri_quicksort_copy(right)
+
+tri_pivot_quicksort(lst)
+print(lst)
