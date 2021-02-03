@@ -58,9 +58,9 @@ def dual_quicksort_copy(L):
     for num in L[1:-1]:
         if num < pivot1:
             left.append(num)
-        if num > pivot2:
+        elif num > pivot2:
             right.append(num)
-        elif (num > pivot1) and (num < pivot2):
+        else:
             mid.append(num)
     return dual_quicksort_copy(left) + [pivot1] + dual_quicksort_copy(mid) + [pivot2] + dual_quicksort_copy(right)
 
