@@ -16,7 +16,7 @@ def quicksort_inplace(L):
 
 #lst = [33,89,55,35,45,98,76,54,49]
 lst = [43, 93, 98,69,76,32,97,31]
-print(quicksort_inplace(lst))
+#print(quicksort_inplace(lst))
     
 
 """
@@ -38,3 +38,31 @@ def quicksort_copy(L):
             right.append(num)
     return quicksort_copy(left) + [pivot] + quicksort_copy(right)
 """
+
+
+def dual_pivot_quicksort(L):
+    copy = dual_quicksort_copy(L)
+    for i in range(len(L)):
+        L[i] = copy[i]
+
+
+def dual_quicksort_copy(L):
+    if len(L) < 2:
+        return L
+    pivot1 = L[0]
+    pivot2 = L[len(L) - 1]
+    if (L[0] > L[len(L) - 1]):
+        pivot1 = L[len(L) - 1]
+        pivot2 = L[0]
+    left, mid, right = [], [], []
+    for num in L[1:-1]:
+        if num < pivot1:
+            left.append(num)
+        if num > pivot2:
+            right.append(num)
+        elif (num > pivot1) and (num < pivot2):
+            mid.append(num)
+    return dual_quicksort_copy(left) + [pivot1] + dual_quicksort_copy(mid) + [pivot2] + dual_quicksort_copy(right)
+
+dual_pivot_quicksort(lst)
+print(lst)
