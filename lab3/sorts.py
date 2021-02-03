@@ -66,3 +66,33 @@ def dual_quicksort_copy(L):
 
 dual_pivot_quicksort(lst)
 print(lst)
+
+def tri_pivot_quicksort(L):
+    copy = tri_quicksort_copy(L)
+    for i in range(len(L)):
+        L[i] = copy[i]
+
+
+def tri_quicksort_copy(L):
+    if len(L) < 3:
+        return L
+    pivot1 = L[0]
+    pivot2 = L[len(L) - 1]
+    pivot3 = L[1]
+    if (pivot1 > pivot2):
+        pivot1, pivot2 = pivot2, pivot1  
+    if (pivot2 > pivot3):
+        pivot2, pivot3 = pivot3, pivot2  
+    if (pivot1 > pivot2):
+        pivot1, pivot2 = pivot2, pivot1
+    left, lmid, rmid, right = [], [], [], []
+    for num in L[2:-1]:
+        if num < pivot1:
+            left.append(num)
+        elif num > pivot3:
+            right.append(num)
+        elif (num > pivot1) and (num < pivot2):
+            lmid.append(num)
+        else:
+            rmid.append(num)
+    return tri_quicksort_copy(left) + [pivot1] + tri_quicksort_copy(lmid) + [pivot2] + tri_quicksort_copy(rmid) + [pivot3] + tri_quicksort_copy(right)
