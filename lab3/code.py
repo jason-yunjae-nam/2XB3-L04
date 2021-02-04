@@ -35,12 +35,13 @@ def timetest_inplace(runs, n):
         #print("sorted ", thislist)
         total += end - start
     return total/runs
-
+#sys.stdout = open("inplace_output.txt", "w")
 # for i in range(1, 10):
 #     print(i*100, timetest_inplace(100, i*100))
+#sys.stdout.close()
 
 def test_my_quick(thislist):
-    return dual_pivot_quicksort(thislist)
+    return my_quicksort(thislist)
 
 def timetest_my_quick(runs, n):
     total = 0
@@ -53,7 +54,7 @@ def timetest_my_quick(runs, n):
     return total/runs
 
 # sys.stdout = open("my_quick_output.txt", "w")
-# for i in range(1, 1000):
+# for i in range(1, 100):
 #     print(i*100, timetest_my_quick(100, i*100))
 # sys.stdout.close()
 
