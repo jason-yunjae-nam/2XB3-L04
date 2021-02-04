@@ -135,5 +135,5 @@ def quad_quicksort_copy(L):
 
     return quad_quicksort_copy(left) + [pivot1] + quad_quicksort_copy(lmid) + [pivot2] + quad_quicksort_copy(mid) + [pivot3] + quad_quicksort_copy(rmid) + [pivot4] + quad_quicksort_copy(right)
 
-quad_pivot_quicksort(lst)
-print(lst)
+#quad_pivot_quicksort(lst)
+#print(lst)
