@@ -1,23 +1,28 @@
 lst = [43, 93, 98,69,76,32,97,31, 31,93, 123, 32,45]
 
 def quicksort_inplace(L):
-    if len(L) < 2:
-        return L
-    pivot = L[len(L)-1]
-    left = -1
-    right = 0
-    for _ in range(len(L)-1):
-        if L[right] > pivot:
-            right+=1
-        else:
-            left+=1
-            L[left], L[right] = L[right], L[left]
-            right+=1
-    L[left+1], L[len(L)-1] = L[len(L)-1], L[left+1]
-    return quicksort_inplace(L[:left+1]) + [L[left+1]] + quicksort_inplace(L[left+2:])
+    inplace_helper(L, 0, len(L)-1)
 
-#print(quicksort_inplace(lst))
+def inplace_helper(L, right, left):
+    if right >= left:
+        return
+    p_index = partition(L, right, left)
+    inplace_helper(L, right, p_index-1)
+    inplace_helper(L, p_index+1, left)
 
+def partition(L, right, left):
+    i = right
+    j = right
+    while j < left:
+        if L[j] <= L[left]:
+            L[i], L[j] = L[j], L[i]
+            i += 1
+        j += 1
+    L[i], L[left] = L[left], L[i]
+    return i
+
+#quicksort_inplace(lst)
+#print(lst)
 
 def my_quicksort(L):
     copy = quicksort_copy(L)
