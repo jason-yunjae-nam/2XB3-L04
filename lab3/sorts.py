@@ -54,19 +54,17 @@ def dual_pivot_quicksort(L):
 def dual_quicksort_copy(L):
     if len(L) < 2:
         return L
-    pivot1 = L[0]
-    pivot2 = L[len(L) - 1]
-    if (L[0] > L[len(L) - 1]):
-        pivot1 = L[len(L) - 1]
-        pivot2 = L[0]
+    pivots = [L[0], L[len(L) - 1]]
+    pivots.sort()
+    pivot1 = pivots[0]
+    pivot2 = pivots[1]
     left, mid, right = [], [], []
+    
     for num in L[1:-1]:
-        if num < pivot1:
-            left.append(num)
-        elif num > pivot2:
-            right.append(num)
-        else:
-            mid.append(num)
+        if num < pivot1: left.append(num)
+        elif num > pivot2: right.append(num)
+        else: mid.append(num)
+
     return dual_quicksort_copy(left) + [pivot1] + dual_quicksort_copy(mid) + [pivot2] + dual_quicksort_copy(right)
 
 #dual_pivot_quicksort(lst)
@@ -84,12 +82,11 @@ def tri_quicksort_copy(L):
             L[0] , L[1] = L[1], L[0]
         return L
 
-    pivot1 = L[0]
-    pivot2 = L[len(L) - 1]
-    pivot3 = L[1]
-    if (pivot1 > pivot2): pivot1, pivot2 = pivot2, pivot1  
-    if (pivot2 > pivot3): pivot2, pivot3 = pivot3, pivot2  
-    if (pivot1 > pivot2): pivot1, pivot2 = pivot2, pivot1
+    pivots = [L[0], L[1], L[len(L) - 1]]
+    pivots.sort()
+    pivot1 = pivots[0]
+    pivot2 = pivots[1]
+    pivot3 = pivots[2]
     left, lmid, rmid, right = [], [], [], []
 
     for num in L[2:-1]:
@@ -119,16 +116,12 @@ def quad_quicksort_copy(L):
             L[0] , L[1] = L[1], L[0]
         return L
 
-    pivot1 = L[0]
-    pivot2 = L[len(L) - 1]
-    pivot3 = L[1]
-    pivot4 = L[len(L)-2]
-    if (pivot1 > pivot2): pivot1, pivot2 = pivot2, pivot1  
-    if (pivot2 > pivot3): pivot2, pivot3 = pivot3, pivot2  
-    if (pivot3 > pivot4): pivot3, pivot4 = pivot4, pivot3
-    if (pivot1 > pivot2): pivot1, pivot2 = pivot2, pivot1  
-    if (pivot2 > pivot3): pivot2, pivot3 = pivot3, pivot2  
-    if (pivot1 > pivot2): pivot1, pivot2 = pivot2, pivot1  
+    pivots = [L[0], L[1], L[len(L) - 2], L[len(L) - 1]]
+    pivots.sort()
+    pivot1 = pivots[0]
+    pivot2 = pivots[1]
+    pivot3 = pivots[2] 
+    pivot4 = pivots[3] 
     left, lmid, mid, rmid, right = [], [], [], [], []
 
     for num in L[2:-2]:
