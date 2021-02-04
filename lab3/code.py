@@ -95,7 +95,7 @@ def timetest_tri(runs, n):
 # sys.stdout.close()
 
 def test_quad(thislist):
-    return tri_pivot_quicksort(thislist)
+    return quad_pivot_quicksort(thislist)
 
 def timetest_quad(runs, n):
     total = 0
