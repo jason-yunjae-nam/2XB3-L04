@@ -27,16 +27,15 @@ def test_inplace(thislist):
 def timetest_inplace(runs, n):
     total = 0
     for _ in range(runs):
-        thislist = create_random_list(10)
-        #print("unsorted ", thislist)
+        thislist = create_random_list(n)
         start = timeit.default_timer()
-        print(test_inplace(thislist))
+        test_inplace(thislist)
         end = timeit.default_timer()
-        #print("sorted ", thislist)
         total += end - start
     return total/runs
+    
 #sys.stdout = open("inplace_output.txt", "w")
-# for i in range(1, 10):
+# for i in range(1, 100):
 #     print(i*100, timetest_inplace(100, i*100))
 #sys.stdout.close()
 
@@ -46,16 +45,16 @@ def test_my_quick(thislist):
 def timetest_my_quick(runs, n):
     total = 0
     for _ in range(runs):
-        thislist = create_random_list(1000)
+        thislist = create_random_list(n)
         start = timeit.default_timer()
         test_my_quick(thislist)
         end = timeit.default_timer()
         total += end - start
     return total/runs
 
-# sys.stdout = open("my_quick_output.txt", "w")
-# for i in range(1, 100):
-#     print(i*100, timetest_my_quick(100, i*100))
+# # sys.stdout = open("my_quick_output.txt", "w")
+# for i in range(1, 500):
+#     print(i*10, timetest_my_quick(100, i*10))
 # sys.stdout.close()
 
 def test_dual(thislist):
@@ -64,7 +63,7 @@ def test_dual(thislist):
 def timetest_dual(runs, n):
     total = 0
     for _ in range(runs):
-        thislist = create_random_list(1000)
+        thislist = create_random_list(n)
         start = timeit.default_timer()
         test_dual(thislist)
         end = timeit.default_timer()
@@ -72,8 +71,8 @@ def timetest_dual(runs, n):
     return total/runs
 
 # sys.stdout = open("dual_output.txt", "w")
-# for i in range(1, 1000):
-#     print(i*100, timetest_dual(100, i*100))
+# for i in range(1, 500):
+#     print(i*10, timetest_dual(100, i*10))
 # sys.stdout.close()
 
 def test_tri(thislist):
@@ -82,7 +81,7 @@ def test_tri(thislist):
 def timetest_tri(runs, n):
     total = 0
     for _ in range(runs):
-        thislist = create_random_list(1000)
+        thislist = create_random_list(n)
         start = timeit.default_timer()
         test_tri(thislist)
         end = timeit.default_timer()
@@ -90,8 +89,8 @@ def timetest_tri(runs, n):
     return total/runs
 
 # sys.stdout = open("tri_output.txt", "w")
-# for i in range(1, 1000):
-#     print(i*100, timetest_tri(100, i*100))
+# for i in range(1, 500):
+#     print(i*10, timetest_tri(100, i*10))
 # sys.stdout.close()
 
 def test_quad(thislist):
@@ -100,7 +99,7 @@ def test_quad(thislist):
 def timetest_quad(runs, n):
     total = 0
     for _ in range(runs):
-        thislist = create_random_list(1000)
+        thislist = create_random_list(n)
         start = timeit.default_timer()
         test_quad(thislist)
         end = timeit.default_timer()
@@ -108,6 +107,6 @@ def timetest_quad(runs, n):
     return total/runs
 
 # sys.stdout = open("quad_output.txt", "w")
-# for i in range(1, 1000):
-#     print(i*100, timetest_quad(100, i*100))
+for i in range(1, 500):
+    print(i*10, timetest_quad(100, i*10))
 # sys.stdout.close()
