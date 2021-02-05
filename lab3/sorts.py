@@ -135,3 +135,33 @@ def quad_quicksort_copy(L):
 
 #quad_pivot_quicksort(lst)
 #print(lst)
+
+def bubble_sort(L):
+    for i in range(len(L) - 1):
+        for j in range(len(L) - i - 1):
+            if L[j] > L[j + 1]:
+                L[j], L[j + 1] = L[j + 1], L[j]
+
+def selection_sort(L):
+    for i in range(len(L)):
+        min = i
+        for j in range(i + 1, len(L)):
+            if L[j] < L[min]:
+                min = j
+        L[i], L[min] = L[min], L[i]
+
+def insertion_sort(L):
+    for i in range(1, len(L)):
+        item = L[i]
+        j = i - 1
+        while j >= 0 and L[j] > item:
+            L[j + 1] = L[j]
+            j -= 1
+        L[j + 1] = item
+
+
+
+insertion_sort(lst)
+print(lst)
+
+#def final_sort(L):
