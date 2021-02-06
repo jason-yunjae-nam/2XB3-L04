@@ -160,4 +160,36 @@ def insertion_sort(L):
             j -= 1
         L[j + 1] = item
 
-#def final_sort(L):
+def insertion_sort_return(L):
+    for i in range(1, len(L)):
+        item = L[i]
+        j = i - 1
+        while j >= 0 and L[j] > item:
+            L[j + 1] = L[j]
+            j -= 1
+        L[j + 1] = item
+    return L
+
+def final_sort(L):
+    copy = final_sort_copy(L)
+    for i in range(len(L)):
+        L[i] = copy[i]
+
+def final_sort_copy(L):  
+    if len(L) < 15:
+        return insertion_sort_return(L)
+    pivots = [L[0], L[len(L) - 1]]
+    pivots.sort()
+    pivot1 = pivots[0]
+    pivot2 = pivots[1]
+    left, mid, right = [], [], []
+    
+    for num in L[1:-1]:
+        if num < pivot1: left.append(num)
+        elif num > pivot2: right.append(num)
+        else: mid.append(num)
+
+    return final_sort_copy(left) + [pivot1] + final_sort_copy(mid) + [pivot2] + final_sort_copy(right)
+    
+final_sort(lst)
+print(lst)

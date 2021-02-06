@@ -168,3 +168,31 @@ def timetest_insertion_factor(runs, n):
 #for i in range(1, 100):
 #    print(i, timetest_dual_factor(10,i), timetest_bubble_factor(10,i), timetest_selection_factor(10,i), timetest_insertion_factor(10,i))
 #sys.stdout.close()
+
+def timetest_insertion(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_insertion(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+def test_final(thislist):
+    return final_sort(thislist)
+
+def timetest_final(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_final(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+sys.stdout = open("dualoutput.txt", "w")
+for i in range(1, 1000):
+    print(i, timetest_final(10,i), timetest_dual(10,i), timetest_insertion(10,i))
+sys.stdout.close()
