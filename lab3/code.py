@@ -11,7 +11,6 @@ def create_random_list(n):
         L.append(random.randint(1,n))
     return L
 
-
 def create_near_sorted_list(n, factor):
     L = create_random_list(n)
     L.sort()
@@ -126,6 +125,16 @@ def timetest_dual_factor(runs, n):
 def test_bubble(thislist):
     return bubble_sort(thislist)
 
+def timetest_bubble(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_bubble(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
 def timetest_bubble_factor(runs, n):
     total = 0
     for _ in range(runs):
@@ -140,6 +149,16 @@ def timetest_bubble_factor(runs, n):
 def test_selection(thislist):
     return selection_sort(thislist)
 
+def timetest_selection(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_selection(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
 def timetest_selection_factor(runs, n):
     total = 0
     for _ in range(runs):
@@ -153,6 +172,16 @@ def timetest_selection_factor(runs, n):
 
 def test_insertion(thislist):
     return insertion_sort(thislist)
+
+def timetest_insertion(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_insertion(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
 
 def timetest_insertion_factor(runs, n):
     total = 0
@@ -169,15 +198,11 @@ def timetest_insertion_factor(runs, n):
 #    print(i, timetest_dual_factor(10,i), timetest_bubble_factor(10,i), timetest_selection_factor(10,i), timetest_insertion_factor(10,i))
 #sys.stdout.close()
 
-def timetest_insertion(runs, n):
-    total = 0
-    for _ in range(runs):
-        thislist = create_random_list(n)
-        start = timeit.default_timer()
-        test_insertion(thislist)
-        end = timeit.default_timer()
-        total += end - start
-    return total/runs
+
+# sys.stdout = open("small_lists.txt", "w")
+# for i in range(1, 51):
+#     print(i, timetest_dual(100, i), timetest_bubble(100, i), timetest_selection(100, i), timetest_insertion(100,i))
+# sys.stdout.close()
 
 def test_final(thislist):
     return final_sort(thislist)
@@ -192,7 +217,7 @@ def timetest_final(runs, n):
         total += end - start
     return total/runs
 
-sys.stdout = open("dualoutput.txt", "w")
-for i in range(1, 1000):
-    print(i, timetest_final(10,i), timetest_dual(10,i), timetest_insertion(10,i))
-sys.stdout.close()
+# sys.stdout = open("finaloutput.txt", "w")
+# for i in range(1, 1000):
+#     print(i, timetest_final(10,i), timetest_dual(10,i), timetest_insertion(10,i))
+# sys.stdout.close()

@@ -1,4 +1,6 @@
-lst = [43, 93, 98,69,76,32,97,31, 31,93, 123, 32,45]
+import random
+
+# lst = [43, 93, 98,69,76,32,97,31, 31,93, 123, 32,45]
 
 def quicksort_inplace(L):
     inplace_helper(L, 0, len(L)-1)
@@ -21,14 +23,14 @@ def partition(L, right, left):
     L[i], L[left] = L[left], L[i]
     return i
 
-#quicksort_inplace(lst)
-#print(lst)
+# quicksort_inplace(lst)
+# print(lst)
+
 
 def my_quicksort(L):
     copy = quicksort_copy(L)
     for i in range(len(L)):
         L[i] = copy[i]
-
 
 def quicksort_copy(L):
     if len(L) < 2:
@@ -45,11 +47,11 @@ def quicksort_copy(L):
 #my_quicksort(lst)
 #print(lst)
 
+
 def dual_pivot_quicksort(L):
     copy = dual_quicksort_copy(L)
     for i in range(len(L)):
         L[i] = copy[i]
-
 
 def dual_quicksort_copy(L):
     if len(L) < 2:
@@ -70,11 +72,11 @@ def dual_quicksort_copy(L):
 #dual_pivot_quicksort(lst)
 #print(lst)
 
+
 def tri_pivot_quicksort(L):
     copy = tri_quicksort_copy(L)
     for i in range(len(L)):
         L[i] = copy[i]
-
 
 def tri_quicksort_copy(L):
     if len(L) < 3:
@@ -100,11 +102,11 @@ def tri_quicksort_copy(L):
 #tri_pivot_quicksort(lst)
 #print(lst)
 
+
 def quad_pivot_quicksort(L):
     copy = quad_quicksort_copy(L)
     for i in range(len(L)):
         L[i] = copy[i]
-
 
 def quad_quicksort_copy(L):
     if len(L) < 4:
@@ -137,6 +139,7 @@ def quad_quicksort_copy(L):
 #print(lst)
 
 
+# Elementary sorting algorithms
 def bubble_sort(L):
     for i in range(len(L) - 1):
         for j in range(len(L) - i - 1):
@@ -190,6 +193,6 @@ def final_sort_copy(L):
         else: mid.append(num)
 
     return final_sort_copy(left) + [pivot1] + final_sort_copy(mid) + [pivot2] + final_sort_copy(right)
-    
-final_sort(lst)
-print(lst)
+
+# final_sort(lst)
+# print(lst)
