@@ -107,6 +107,64 @@ def timetest_quad(runs, n):
     return total/runs
 
 # sys.stdout = open("quad_output.txt", "w")
-for i in range(1, 500):
-    print(i*10, timetest_quad(100, i*10))
+#for i in range(1, 500):
+#    print(i*10, timetest_quad(100, i*10))
 # sys.stdout.close()
+
+
+def timetest_dual_factor(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_near_sorted_list(1000, n/100)
+        start = timeit.default_timer()
+        test_dual(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+
+def test_bubble(thislist):
+    return bubble_sort(thislist)
+
+def timetest_bubble_factor(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_near_sorted_list(1000, n/100)
+        start = timeit.default_timer()
+        test_bubble(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+
+def test_selection(thislist):
+    return selection_sort(thislist)
+
+def timetest_selection_factor(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_near_sorted_list(1000, n/100)
+        start = timeit.default_timer()
+        test_selection(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+
+def test_insertion(thislist):
+    return insertion_sort(thislist)
+
+def timetest_insertion_factor(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_near_sorted_list(1000, n/100)
+        start = timeit.default_timer()
+        test_insertion(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+#sys.stdout = open("dualoutput.txt", "w")
+#for i in range(1, 100):
+#    print(i, timetest_dual_factor(10,i), timetest_bubble_factor(10,i), timetest_selection_factor(10,i), timetest_insertion_factor(10,i))
+#sys.stdout.close()
