@@ -1,18 +1,4 @@
-# starttotal = timeit.default_timer()
-# #stuff and things
-# endtotal = timeit.default_timer()
-# totaltotal = 0
-# totaltotal += endtotal - starttotal
-# print("total time = ", totaltotal)
-
-
-# #test copy()
-import timeit
 import random
-import math
-
-
-
 
 def create_random_list(n):
     L = []
@@ -42,15 +28,12 @@ def mergesort_three(L):
     #Split the incoming list into three
     split = len(L)//3
     left, mid, right = L[:split], L[split : split+split], L[split+split:]
-    #worst case is that right is the largest list with (split + 2) entries
-    #other case besides perfect three is (split + 1) entires
 
     #Mergesort_three core
     mergesort_three(left)
     mergesort_three(mid)
     mergesort_three(right)
     temp = merge_three(left, mid, right)
-    print("temp: ", temp)
 
     for i in range(len(temp)):
         L[i] = temp[i]
@@ -70,11 +53,10 @@ def merge_three(left, mid, right):
             L.append(mid[j])
             j += 1
         elif (j >= len(mid)) and (k >= len(right)):
-            #if right is last list
+            #if left is last list
             L.append(left[i])
             i += 1
         elif i >= len(left):
-            print("here")
             #if left finish first
             if mid[j] <= right[k]:
                 L.append(mid[j])
@@ -83,7 +65,6 @@ def merge_three(left, mid, right):
                 L.append(right[k])
                 k+=1
         elif j >= len(mid):
-            print("here2")
             #if mid finish first
             if left[i] <= right[k]:
                 L.append(left[i])
@@ -92,7 +73,6 @@ def merge_three(left, mid, right):
                 L.append(right[k])
                 k +=1
         elif k >= len(right):
-            print("here3")
             #if right finish first
             if left[i] <= mid[j]:
                 L.append(left[i])
