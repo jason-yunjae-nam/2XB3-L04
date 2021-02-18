@@ -1,11 +1,12 @@
 import random
+import math
+
 
 def create_random_list(n):
     L = []
     for _ in range(n):
         L.append(random.randint(1,n))
     return L
-
 
 def create_near_sorted_list(n, factor):
     L = create_random_list(n)
@@ -15,6 +16,49 @@ def create_near_sorted_list(n, factor):
         index2 = random.randint(0, n-1)
         L[index1], L[index2] = L[index2], L[index1]
     return L
+
+def mergesort_bottom(L):
+    group = 1 #group divides the list into groups of 1, 2, 4, 8,...
+    while group <= len(L):
+        for i in range(0, len(L), 2*group):
+            start = i
+            mid = i + group - 1
+            end = min(i + 2*group - 1, len(L)-1)
+            merge_bottom(L, start, mid, end)
+        group = 2*group
+    return L
+
+def merge_bottom(L, start, mid, end):
+    a = L[start:mid+1]
+    b = L[mid+1:end+1]
+    combined = []
+    while len(a)!=0 or len(b)!=0:
+        # if a is empty, then copy rest of b to combined
+        if len(a) == 0:
+            combined += b
+            b.clear()
+        # if b is empty, then copy rest of a to combined
+        elif len(b) == 0:
+            combined += a
+            a.clear()
+        elif a[0] >= b[0]:
+            combined.append(b[0])
+            b.remove(b[0])
+        elif a[0] < b[0]:
+            combined.append(a[0])
+            a.remove(a[0])
+    counter = 0
+    # copying sorted list combined to original list L
+    for i in range(start, end+1):
+        L[i] = combined[counter]
+        counter+=1
+    return L
+
+# bottomup_test_list = create_random_list(100)
+# print(bottomup_test_list)
+# mergesort_bottom(bottomup_test_list)
+# print(bottomup_test_list)
+
 
 def mergesort_three(L):
 
@@ -96,10 +140,10 @@ def merge_three(left, mid, right):
                 k += 1
     return L
 
-L = create_random_list(100)
-print("Random L: ", L)
-mergesort_three(L)
-print("Sorted L: ", L)
+# L = create_random_list(100)
+# print("Random L: ", L)
+# mergesort_three(L)
+# print("Sorted L: ", L)
 
 
 def mergesort(L):
