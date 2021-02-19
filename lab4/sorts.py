@@ -153,12 +153,10 @@ def mergesort(L):
     mid = len(L)//2 
     left, right = L[:mid], L[mid:]
 
-    print(left, right)
     #Mergesort core
     mergesort(left)
     mergesort(right)
     temp = merge(left, right)
-    print("temp: ", temp)
 
     #Copy the sorted list to L
     for i in range(len(temp)):
