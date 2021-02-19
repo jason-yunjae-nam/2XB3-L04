@@ -5,8 +5,6 @@ import sys
 
 from sorts import *
 
-def test_inplace(thislist):
-    return quicksort_inplace(thislist)
 
 def timetest_bottomup(runs, n):
     total = 0
