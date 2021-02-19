@@ -68,3 +68,19 @@ def timetest_two_way(runs, n):
     
 # for i in range(1, 1000):
 #     print(i*100, timetest_two_way(1, i*100))
+
+
+def timetest_mergesort_factor(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_near_sorted_list(runs, n/100)
+        start = timeit.default_timer()
+        test_two_way(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+sys.stdout = open("dualoutput.txt", "w")
+for i in range(1, 100):
+    print(i, timetest_mergesort_factor(10,i))
+sys.stdout.close()
