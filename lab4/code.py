@@ -32,8 +32,8 @@ def timetest_traditional(runs, n):
     return total/runs
 
 #sys.stdout = open("traditional_output.txt", "w")
-for i in range(1, 100):
-    print(i*100, timetest_traditional(100, i*100), timetest_bottomup(100, i*100))
+#for i in range(1, 100):
+#    print(i*100, timetest_traditional(100, i*100), timetest_bottomup(100, i*100))
 #sys.stdout.close()
 
 def test_three_way(thislist):
@@ -80,7 +80,7 @@ def timetest_mergesort_factor(runs, n):
         total += end - start
     return total/runs
 
-sys.stdout = open("dualoutput.txt", "w")
-for i in range(1, 100):
-    print(i, timetest_mergesort_factor(10,i))
-sys.stdout.close()
+#sys.stdout = open("dualoutput.txt", "w")
+#for i in range(0, 51):
+#    print(i, timetest_mergesort_factor(500,i))
+#sys.stdout.close()
