@@ -1,4 +1,3 @@
-#testing goes here :)
 import timeit
 import random 
 import math
@@ -38,3 +37,36 @@ def timetest_traditional(runs, n):
 for i in range(1, 100):
     print(i*100, timetest_traditional(100, i*100), timetest_bottomup(100, i*100))
 #sys.stdout.close()
+
+def test_three_way(thislist):
+    return mergesort_three(thislist)
+
+def timetest_three_way(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_three_way(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+    
+# for i in range(1, 1000):
+#     print(i*100, timetest_three_way(1, i*100))
+
+
+def test_two_way(thislist):
+    return mergesort(thislist)
+
+def timetest_two_way(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        test_two_way(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+    
+# for i in range(1, 1000):
+#     print(i*100, timetest_two_way(1, i*100))
