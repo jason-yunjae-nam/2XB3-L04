@@ -80,17 +80,6 @@ def timetest_mergesort_factor(runs, n):
 #     print(i, timetest_mergesort_factor(500,i))
 # sys.stdout.close()
 
-
-def timetest_my_quick(runs, n):
-    total = 0
-    for _ in range(runs):
-        thislist = create_random_list(n)
-        start = timeit.default_timer()
-        my_quicksort(thislist)
-        end = timeit.default_timer()
-        total += end - start
-    return total/runs
-
 def timetest_quicksort_factor(runs, n):
     total = 0
     for _ in range(runs):
