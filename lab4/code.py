@@ -15,11 +15,6 @@ def timetest_bottomup(runs, n):
         end = timeit.default_timer()
         total += end - start
     return total/runs
-    
-#sys.stdout = open("bottomup_output.txt", "w")
-#for i in range(1, 100):
-#    print(i*100, timetest_bottomup(100, i*100))
-#sys.stdout.close()
 
 def timetest_traditional(runs, n):
     total = 0
@@ -31,7 +26,7 @@ def timetest_traditional(runs, n):
         total += end - start
     return total/runs
 
-#sys.stdout = open("traditional_output.txt", "w")
+#sys.stdout = open("traditional_vs_bottomup_output.txt", "w")
 #for i in range(1, 100):
 #    print(i*100, timetest_traditional(100, i*100), timetest_bottomup(100, i*100))
 #sys.stdout.close()
@@ -80,7 +75,33 @@ def timetest_mergesort_factor(runs, n):
         total += end - start
     return total/runs
 
-#sys.stdout = open("dualoutput.txt", "w")
-#for i in range(0, 51):
-#    print(i, timetest_mergesort_factor(500,i))
-#sys.stdout.close()
+# sys.stdout = open("merge_factor_output.txt", "w")
+# for i in range(0, 51):
+#     print(i, timetest_mergesort_factor(500,i))
+# sys.stdout.close()
+
+
+def timetest_my_quick(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_random_list(n)
+        start = timeit.default_timer()
+        my_quicksort(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+def timetest_quicksort_factor(runs, n):
+    total = 0
+    for _ in range(runs):
+        thislist = create_near_sorted_list(runs, n/100)
+        start = timeit.default_timer()
+        my_quicksort(thislist)
+        end = timeit.default_timer()
+        total += end - start
+    return total/runs
+
+# sys.stdout = open("merge_vs_quick_factor_output.txt", "w")
+# for i in range(0, 51):
+#     print(i, timetest_mergesort_factor(100, i), timetest_quicksort_factor(100, i))
+# sys.stdout.close()

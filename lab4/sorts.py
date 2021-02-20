@@ -145,7 +145,7 @@ def merge_three(left, mid, right):
 # mergesort_three(L)
 # print("Sorted L: ", L)
 
-
+# tranditional mergesort provided in lab4.py file
 def mergesort(L):
     
     if len(L) <= 1:
@@ -161,7 +161,6 @@ def mergesort(L):
     #Copy the sorted list to L
     for i in range(len(temp)):
         L[i] = temp[i]
-
 
 def merge(left, right):
     L = []
@@ -183,3 +182,22 @@ def merge(left, right):
                 L.append(right[j])
                 j+=1
     return L
+
+# quicksort implementation provided in lab3.py file - to compare mergesort
+# and quicksort for near-sorted lists
+def my_quicksort(L):
+    copy = quicksort_copy(L)
+    for i in range(len(L)):
+        L[i] = copy[i]
+
+def quicksort_copy(L):
+    if len(L) < 2:
+        return L
+    pivot = L[0]
+    left, right = [], []
+    for num in L[1:]:
+        if num < pivot:
+            left.append(num)
+        else:
+            right.append(num)
+    return quicksort_copy(left) + [pivot] + quicksort_copy(right)
