@@ -44,7 +44,22 @@ def timetest_build_heap3(runs, n):
         total += end - start
     return total/runs
 
-#sys.stdout = open("build_heap_1_2_3.txt", "w")
-for i in range(1, 100):
-    print(i, timetest_build_heap1(10, i), timetest_build_heap2(10, i), timetest_build_heap3(10, i))
-#sys.stdout.close()
+# sys.stdout = open("runtime_build_heap_1_2_3.txt", "w")
+# for i in range(1, 100):
+#     print(i*10, timetest_build_heap1(100, i*10), timetest_build_heap2(100, i*10), timetest_build_heap3(100, i*10))
+# sys.stdout.close()
+
+# sys.stdout = open("runtime_build_heap1.txt", "w")
+for i in range(1, 1000):
+    print(i, timetest_build_heap1(100, i))
+# sys.stdout.close()
+
+# sys.stdout = open("runtime_build_heap2.txt", "w")
+# for i in range(1, 100):
+#     print(i*10, timetest_build_heap2(100, i*10))
+# sys.stdout.close()
+
+# sys.stdout = open("runtime_build_heap3.txt", "w")
+# for i in range(1, 100):
+#     print(i*10, timetest_build_heap3(100, i*10))
+# sys.stdout.close()
