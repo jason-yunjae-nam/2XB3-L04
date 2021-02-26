@@ -7,7 +7,7 @@ class Heap:
     def __init__(self, L):
         self.data = L
         self.length = len(L)
-        self.build_heap1()
+        #self.build_heap1()
 
     def build_heap1(self):
         for i in range(self.length // 2 - 1, -1, -1):
@@ -26,7 +26,7 @@ class Heap:
 
     def is_heap(self):
         for i in range(self.length // 2 - 1, -1, -1):
-            if not (self.data[self.left(i)] <= self.data[i] and self.data[self.right(i)] <= self.data[i]):
+            if self.left(i) < self.length and self.right(i) < self.length and not (self.data[self.left(i)] <= self.data[i] and self.data[self.right(i)] <= self.data[i]):
                 return False
         return True
 
@@ -87,3 +87,6 @@ class Heap:
 
 
 a = Heap([1,2,3,4,5,45,12,567,12])
+# print(a.__str__())
+# a.build_heap3()
+# print(a.__str__())
