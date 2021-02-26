@@ -14,7 +14,10 @@ class Heap:
             self.sink(i)
 
     def build_heap2(self):
-        #TODO
+        temp = self.data
+        self.data = []
+        self.length = 0
+        self.insert_values(temp)
 
     def build_heap3(self):
         while not self.is_heap():
@@ -26,8 +29,6 @@ class Heap:
             if not (self.data[self.left(i)] <= self.data[i] and self.data[self.right(i)] <= self.data[i]):
                 return False
         return True
-            
-        
 
     def sink(self, i):
         largest_known = i
@@ -86,5 +87,3 @@ class Heap:
 
 
 a = Heap([1,2,3,4,5,45,12,567,12])
-print("what the fuck")
-print(a)
