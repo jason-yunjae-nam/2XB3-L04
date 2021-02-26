@@ -47,13 +47,3 @@ class k_heap:
             self.data[i], self.data[largest_known] = self.data[largest_known], self.data[i]
             #sink switched element if needed
             self.sink(largest_known)
-
-    def get_data(self):
-        return self.data
-
-
-l = [3, 1, 2, 6, 4, 7, 9]
-l2 = [8, 9, 22, 7, 18, 15, 6, 2, 16, 1, 17, 21, 5, 19, 3, 4, 14, 13, 12, 11, 20, 10]
-hmm = k_heap(l2, 3)
-print(hmm.get_data())
-print(hmm.parent(0))
