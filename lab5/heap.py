@@ -17,7 +17,17 @@ class Heap:
         #TODO
 
     def build_heap3(self):
-        #TODO
+        while not self.is_heap():
+            for i in range(0, self.length // 2, 1):
+                self.sink(i)
+
+    def is_heap(self):
+        for i in range(self.length // 2 - 1, -1, -1):
+            if not (self.data[self.left(i)] <= self.data[i] and self.data[self.right(i)] <= self.data[i]):
+                return False
+        return True
+            
+        
 
     def sink(self, i):
         largest_known = i
@@ -73,3 +83,8 @@ class Heap:
             s += "\n"
             whitespace = whitespace // 2
         return s
+
+
+a = Heap([1,2,3,4,5,45,12,567,12])
+print("what the fuck")
+print(a)
