@@ -85,8 +85,3 @@ class Heap:
             whitespace = whitespace // 2
         return s
 
-
-a = Heap([1,2,3,4,5,45,12,567,12])
-# print(a.__str__())
-# a.build_heap3()
-# print(a.__str__())
