@@ -47,3 +47,9 @@ class k_heap:
             self.data[i], self.data[largest_known] = self.data[largest_known], self.data[i]
             #sink switched element if needed
             self.sink(largest_known)
+<<<<<<< HEAD
+=======
+
+    def get_data(self):
+        return self.data
+>>>>>>> 1a61bdeccc0a0cc45cf2afbfe4850922f6f897a9
