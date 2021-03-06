@@ -63,10 +63,10 @@ class RBNode:
     def rotate_left(self):
         temp = self.right
         temp.parent = self.parent
-        if self.parent != None and self.is_left_child():
-            self.parent.left = temp
-        elif self.parent != None:
+        if self.parent != None and self.is_right_child():
             self.parent.right = temp
+        elif self.parent != None:
+            self.parent.left = temp
         self.right = temp.left
         if temp.left != None:
             temp.left.parent = self
@@ -138,12 +138,7 @@ class RBTree:
                     self.fix(node.parent)
                 # left right case
                 elif node.is_right_child() and node.parent.is_left_child():
-                    node.parent.parent.colour = "R"
-                    node.colour = "B"
-                    if self.root == node.parent.parent:
-                        self.root = node
                     node.parent.rotate_left()
-                    node.parent.rotate_right()
                     self.fix(node)
                 # right right case
                 elif node.is_right_child() and node.parent.is_right_child():
@@ -155,12 +150,7 @@ class RBTree:
                     self.fix(node.parent)
                 # right left case
                 else:
-                    node.parent.parent.colour = "R"
-                    node.colour = "B"
-                    if self.root == node.parent.parent:
-                        self.root = node
                     node.parent.rotate_right()
-                    node.parent.rotate_left()
                     self.fix(node)
         self.root.make_black()
                     
