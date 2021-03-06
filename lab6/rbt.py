@@ -7,6 +7,9 @@ class RBNode:
         self.parent = None
         self.colour = "R"
 
+    def get_uncle(self):
+        return
+
     def is_leaf(self):
         return self.left == None and self.right == None
 
@@ -116,6 +119,7 @@ class RBTree:
             else:
                 self.__insert(node.right, value)
 
+
     def fix(self, node):
         if node.parent == None:
             node.make_black()
@@ -130,11 +134,10 @@ class RBTree:
             else:
                 # left left case
                 if node.is_left_child() and node.parent.is_left_child():
-                    node.parent.parent.colour = "R"
-                    node.parent.colour = "B"
                     if self.root == node.parent.parent:
                         self.root = node.parent
                     node.parent.parent.rotate_right()
+                    node.parent.colour, node.parent.right.colour = node.parent.right.colour, node.parent.colour
                     self.fix(node.parent)
                 # left right case
                 elif node.is_right_child() and node.parent.is_left_child():
@@ -142,14 +145,13 @@ class RBTree:
                     self.fix(node)
                 # right right case
                 elif node.is_right_child() and node.parent.is_right_child():
-                    node.parent.parent.colour = "R"
-                    node.parent.colour = "B"
                     if self.root == node.parent.parent:
                         self.root = node.parent
                     node.parent.parent.rotate_left()
+                    node.parent.colour, node.parent.left.colour = node.parent.left.colour, node.parent.colour
                     self.fix(node.parent)
                 # right left case
-                else:
+                elif node.is_left_child() and node.parent.is_right_child():
                     node.parent.rotate_right()
                     self.fix(node)
         self.root.make_black()
