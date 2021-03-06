@@ -96,17 +96,17 @@ class BST:
             return "[" +  self.__str_helper(node.left) + " <- " + str(node) + "]"
         return "[" + self.__str_helper(node.left) + " <- " + str(node) + " -> " + self.__str_helper(node.right) + "]"
 
+a = RBTree()
+b = BST()
 def test_height():
-    a = RBTree()
-    b = BST()
     L = create_random_list(10000)
     for i in L:
         a.insert(i)
         b.insert(i)
-    return a.get_height(), b.get_height()
 
-for i in range(10000):
-    print(test_height())
+for i in range(1, 1000):
+    test_height()
+    print(i, a.get_height(), b.get_height())
 
 # def timetest_factor(runs, n):
 #     total = 0
