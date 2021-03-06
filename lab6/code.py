@@ -105,24 +105,26 @@ def test_height(a, b):
         a.insert(i)
         b.insert(i)
 
+def test_height2(a, b, n):
+    for i in range(1, n):
+        a.insert(i)
+        b.insert(i)
+
 for i in range(1, 1000):
     a = RBTree()
     b = BST()
-    test_height(a, b)
+    test_height2(a, b, i)
     print(i, a.get_height(), b.get_height())
 
-# def timetest_factor(runs, n):
-#     total = 0
-#     for _ in range(runs):
-#         thislist = create_near_sorted_list(1000, n/100)
-#         start = timeit.default_timer()
-#         test_insertion(thislist)
-#         end = timeit.default_timer()
-#         total += end - start
-#     return total/runs
 
-# a = RBTree()
-# L = [4,1,6,8,9,8,2,2,7,6]
-# for i in L:
-#     a.insert(i)
-# print(a) 
+def test_factor(a, b, n):
+    thislist = create_near_sorted_list(1000, n)
+    for i in thislist:
+        a.insert(i)
+        b.insert(i)
+
+for i in range(1, 100):
+    a = RBTree()
+    b = BST()
+    test_factor(a, b, i/100)
+    print(i, a.get_height(), b.get_height())
