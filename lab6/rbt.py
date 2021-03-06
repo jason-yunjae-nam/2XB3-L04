@@ -179,14 +179,14 @@ class RBTree:
             return "[" +  self.__str_helper(node.left) + " <- " + str(node) + "]"
         return "[" + self.__str_helper(node.left) + " <- " + str(node) + " -> " + self.__str_helper(node.right) + "]"
 
-a = RBTree()
-a.insert(10)
-a.insert(5)
-a.insert(6)
-a.insert(9)
-#a.insert(15)
-a.insert(8)
+# a = RBTree()
+# a.insert(10)
+# a.insert(5)
+# a.insert(6)
+# a.insert(9)
+# #a.insert(15)
+# a.insert(8)
 
 
-print(a)
-print(a.root)
+# print(a)
+# print(a.root)
