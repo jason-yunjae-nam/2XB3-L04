@@ -23,9 +23,8 @@ class Graph:
             self.adj[node1].append(node2)
             self.adj[node2].append(node1)
 
-    # I commented this out because it's giving an error - I think whoever did this forgot to complete it?
-    # def number_of_nodes():
-    #     return len()
+    def number_of_nodes(self):
+        return len(self.adj)
 
 # shown in lecture
 def create_random_graph(n, m):
@@ -45,23 +44,23 @@ def create_random_graph(n, m):
 def BFS(G, node1, node2):
     Q = deque([node1])
     marked = {node1 : True}
-    print(Q)
-    print(marked.items())
+    #print(Q)
+    #print(marked.items())
     for node in G.adj:
         if node != node1:
             marked[node] = False
-    print(marked.items())
+    #print(marked.items())
     while len(Q) != 0:
         current_node = Q.popleft()
-        print(current_node)
+        #print(current_node)
         for node in G.adj[current_node]:
             if node == node2:
                 return True
             if not marked[node]:
                 Q.append(node)
                 marked[node] = True
-            print(Q)
-            print(marked.items())
+            #print(Q)
+            #print(marked.items())
     return False
 
 #Depth First Search - given in lab7.py file
@@ -123,6 +122,24 @@ def DFS2(G, node1, node2):
                 S.append(node)
     return []
 
+def BFS3(G, node1):
+    Q = deque([node1])
+    marked = {node1 : True}
+    paths = {}
+    for node in G.adj:
+        if node != node1:
+            marked[node] = False
+    while len(Q) != 0:
+        current_node = Q.popleft()
+        for node in G.adj[current_node]:
+            if not marked[node]:
+                Q.append(node)
+                marked[node] = True
+                paths[node] = current_node
+    return paths
+
+
+# a = {0: [5, 1, 2], 1: [2, 4, 0, 5], 2: [1, 0], 3: [], 4: [1], 5: [0, 1]}
 a = Graph(6)
 a.add_edge(0, 5)
 a.add_edge(0, 1)
@@ -137,6 +154,17 @@ a.add_edge(4, 1)
 a.add_edge(5, 0)
 a.add_edge(5, 1)
 # print(a.adj)
-# print(BFS2(a, 0, 4))
+# print(DFS(a, 0))
 
-# a = {0: [5, 1, 2], 1: [2, 4, 0, 5], 2: [1, 0], 3: [], 4: [1], 5: [0, 1]}
+# b is the graph in the lab7 pdf, except it has an additional 0 node
+# b = {0: [], 1: [2, 3], 2: [1, 4], 3: [1, 4, 5], 4: [2, 3, 5, 6], 5: [3, 4], 6: [4]}
+b = Graph(7)
+b.add_edge(1, 2)
+b.add_edge(1, 3)
+b.add_edge(2, 4)
+b.add_edge(3, 4)
+b.add_edge(3, 5)
+b.add_edge(4, 5)
+b.add_edge(4, 6)
+# print(b.adj)
+# print(BFS3(b, 1))
