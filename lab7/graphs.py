@@ -142,6 +142,8 @@ def DFS3(G, node1):
     return
 
 def has_cycle(G):
+    if G.number_of_nodes() <= 2:
+        return False
     for i in range(G.number_of_nodes()):
         for j in range(G.number_of_nodes()):
             if i !=j and BFS(G, i, j):
