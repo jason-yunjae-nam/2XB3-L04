@@ -142,7 +142,16 @@ def DFS3(G, node1):
     return
 
 def has_cycle(G):
-    return
+    for i in range(G.number_of_nodes()):
+        for j in range(G.number_of_nodes()):
+            if i !=j and BFS(G, i, j):
+                G_new = G
+                path = BFS2(G_new, i, j)
+                G_new.adj[path[0]].remove(path[1])
+                G_new.adj[path[1]].remove(path[0])
+                if BFS(G_new, i, j):
+                    return True
+    return False
 
 def is_connected(G):
     g_list = list(G.adj)
@@ -177,8 +186,6 @@ a.add_edge(2, 0)
 a.add_edge(4, 1)
 a.add_edge(5, 0)
 a.add_edge(5, 1)
-# print(a.adj)
-# print(DFS(a, 0))
 
 # b is the graph in the lab7 pdf, except it has an additional 0 node
 # b = {0: [], 1: [2, 3], 2: [1, 4], 3: [1, 4, 5], 4: [2, 3, 5, 6], 5: [3, 4], 6: [4]}
@@ -186,11 +193,21 @@ b = Graph(7)
 b.add_edge(1, 2)
 b.add_edge(1, 3)
 b.add_edge(2, 4)
-b.add_edge(3, 4)
-b.add_edge(3, 5)
-b.add_edge(4, 5)
-b.add_edge(4, 6)
-# print(b.adj)
-# print(DFS3(b, 1))
+#b.add_edge(3, 2)
 
-# print(is_connected(b))
+#b.add_edge(3, 4)
+b.add_edge(3, 5)
+#b.add_edge(4, 5)
+#b.add_edge(4, 6)
+
+c = Graph(7)
+c.add_edge(1, 6)
+c.add_edge(1, 4)
+c.add_edge(2, 6)
+c.add_edge(2, 5)
+c.add_edge(4, 5)
+
+d = Graph(4)
+d.add_edge(1,0)
+d.add_edge(2,1)
+d.add_edge(3,1)
