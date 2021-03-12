@@ -71,12 +71,12 @@ def DFS(G, node1, node2):
         marked[node] = False
     #print(marked.items())
     while len(S) != 0:
-        #print(S)
+        print(S)
         current_node = S.pop()
-        #print(current_node)
+        print(current_node)
         if not marked[current_node]:
             marked[current_node] = True
-            #print(marked.items())
+            print(marked.items())
             for node in G.adj[current_node]:
                 if node == node2:
                     return True
@@ -138,6 +138,30 @@ def BFS3(G, node1):
                 paths[node] = current_node
     return paths
 
+def DFS3(G, node1):
+    return
+
+def has_cycle(G):
+    return
+
+def is_connected(G):
+    g_list = list(G.adj)
+    node1 = g_list[0]
+    Q = deque([node1])
+    marked = {node1 : True}
+    for node in G.adj:
+        if node != g_list[0]:
+            marked[node] = False
+    while len(Q) != 0:
+        current_node = Q.popleft()
+        for node in G.adj[current_node]:
+            if not marked[node]:
+                Q.append(node)
+                marked[node] = True
+    for i in marked:
+        if marked[i] == False:
+            return False
+    return True
 
 # a = {0: [5, 1, 2], 1: [2, 4, 0, 5], 2: [1, 0], 3: [], 4: [1], 5: [0, 1]}
 a = Graph(6)
@@ -167,4 +191,6 @@ b.add_edge(3, 5)
 b.add_edge(4, 5)
 b.add_edge(4, 6)
 # print(b.adj)
-# print(BFS3(b, 1))
+# print(DFS3(b, 1))
+
+# print(is_connected(b))
