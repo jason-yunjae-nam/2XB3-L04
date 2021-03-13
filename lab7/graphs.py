@@ -71,12 +71,9 @@ def DFS(G, node1, node2):
         marked[node] = False
     #print(marked.items())
     while len(S) != 0:
-        print(S)
         current_node = S.pop()
-        print(current_node)
         if not marked[current_node]:
             marked[current_node] = True
-            print(marked.items())
             for node in G.adj[current_node]:
                 if node == node2:
                     return True
@@ -111,6 +108,9 @@ def DFS2(G, node1, node2):
     for node in G.adj:
         marked[node] = False
     while len(S) != 0:
+        # print(S)
+        # print(path)
+        # print(marked)
         current_node = S.pop()
         path.append(current_node)
         if not marked[current_node]:
@@ -120,6 +120,10 @@ def DFS2(G, node1, node2):
                     path.append(node)
                     return path
                 S.append(node)
+        # print(S)
+        # print(path)
+        # print(marked)
+        # print("")
     return []
 
 def BFS3(G, node1):
@@ -145,11 +149,16 @@ def DFS3(G, node1):
     for node in G.adj:
         marked[node] = False
     while len(S) != 0:
+        # print(S)
+        # print(paths)
+        # print(marked)
+        # print("")
         current_node = S.pop()
         if not marked[current_node]:
             marked[current_node] = True
             for node in G.adj[current_node]:
-                S.append(node)
+                if not node in S:
+                    S.append(node)
         if len(S) > 0 and paths.get(S[-1]) == None and S[-1] != node1 and G.are_connected(S[-1], current_node):
             paths[S[-1]] = current_node
     return paths
@@ -202,6 +211,10 @@ a.add_edge(4, 1)
 a.add_edge(5, 0)
 a.add_edge(5, 1)
 
+# print(DFS3(a, 0))
+# print(DFS2(a, 0, 1))
+# print("__________________________")
+
 # b is the graph in the lab7 pdf, except it has an additional 0 node
 # b = {0: [], 1: [2, 3], 2: [1, 4], 3: [1, 4, 5], 4: [2, 3, 5, 6], 5: [3, 4], 6: [4]}
 b = Graph(7)
@@ -215,6 +228,7 @@ b.add_edge(4, 5)
 b.add_edge(4, 6)
 
 # print(DFS3(b, 1))
+# print(DFS2(b, 1, 6))
 
 c = Graph(7)
 c.add_edge(1, 6)
