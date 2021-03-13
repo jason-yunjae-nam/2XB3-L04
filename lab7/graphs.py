@@ -139,7 +139,20 @@ def BFS3(G, node1):
     return paths
 
 def DFS3(G, node1):
-    return
+    S = [node1]
+    paths = {}
+    marked = {}
+    for node in G.adj:
+        marked[node] = False
+    while len(S) != 0:
+        current_node = S.pop()
+        if not marked[current_node]:
+            marked[current_node] = True
+            for node in G.adj[current_node]:
+                S.append(node)
+        if len(S) > 0 and paths.get(S[-1]) == None and S[-1] != node1 and G.are_connected(S[-1], current_node):
+            paths[S[-1]] = current_node
+    return paths
 
 def has_cycle(G):
     for i in range(G.number_of_nodes()):
@@ -193,12 +206,13 @@ b = Graph(7)
 b.add_edge(1, 2)
 b.add_edge(1, 3)
 b.add_edge(2, 4)
-#b.add_edge(3, 2)
 
-#b.add_edge(3, 4)
+b.add_edge(3, 4)
 b.add_edge(3, 5)
-#b.add_edge(4, 5)
-#b.add_edge(4, 6)
+b.add_edge(4, 5)
+b.add_edge(4, 6)
+
+# print(DFS3(b, 1))
 
 c = Graph(7)
 c.add_edge(1, 6)
